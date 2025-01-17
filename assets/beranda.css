@@ -1,0 +1,229 @@
+:root {
+  --primary: #ea5a0c;
+  --bg: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: poppins,sans-serif;
+  background: linear-gradient(45deg, #000,#6b2d0b,#000000, #0f144e);
+  background-attachment: fixed;
+  background-size: 500%;
+  animation: backgroundAnimation 4s infinite ease;
+  color: #fff;
+  min-height: 3000px;
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+
+@keyframes backgroundAnimation{
+  0%, 100%{
+      background-position: 0% 50%;
+  }
+  50%{
+      background-position: 100% 50%;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 7%;
+  background-color: #020202;
+  border-bottom: 1px solid var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.navbar .navbar-logo span {
+  color: var(--primary);
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.navbar .navbar-nav a {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav ::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary);
+    transform: scaleX(0);
+    transition: 0.3s linear;
+  }
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+.isi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 95%;
+}
+
+
+
+h1 {
+  
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.isi h1 span {
+  color: var(--primary);
+}
+
+p{
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+img {
+  flex-shrink: 0;
+  width: 450px;
+  margin-top: 150px;
+}
+
+.tentangkami {
+  padding: 8rem 7% 1.4rem;
+}
+
+.tentangkami h2{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  
+}
+
+.tentangkami h2 span {
+  color: var(--primary);
+}
+
+.tentangkami .row {
+  display: flex;
+  height: 427px;
+}
+
+.tentangkami .row .about-img {
+  flex: 1 1 45rem;
+  margin: 0;
+}
+
+.tentangkami .row .about-img img {
+  width: 80%;
+  justify-content: flex-start
+}
+
+.tentangkami .row .content {
+  flex: 1 1 25rem;
+  padding: 0 1rem;
+}
+.tentangkami .row .content h3 {
+  font-size: 1.8rem;
+  margin-top: 7rem;
+  margin-bottom: 1rem;
+}
+
+.tentangkami .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  line-height: 1.6;
+}
+
+.kontak {
+  width: 80%;
+  margin: auto;
+  border-radius: 20%;
+  padding: 8rem 7% 1.4rem;
+  margin-top: 10rem;
+}
+
+.kontak h2{
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.kontak h2 span {
+  color: var(--primary);
+}
+
+.kontak p{
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+  font-weight: 100;
+}
+.kontak .row form {
+  flex: 1 1 45rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  background-color: #2a2d27;
+  padding: 3rem 2rem;
+  
+ 
+}
+.kontak .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  background-color: var(--bg);
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding-left: 2rem;
+}
+
+.kontak .row form .input-group input {
+  width: 100%;
+  font-size: 1.7rem;
+  background: none;
+  color: #fff;
+}
+.kontak .row form .btn {
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font: 1.7rem;
+  color: #fff;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+

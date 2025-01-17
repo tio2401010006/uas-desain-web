@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Halaman Beranda</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="assets/beranda.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar-logo"><span>Warung</span> Mie sukses</a>
+      <div class="navbar-nav">
+        <a href="#">Beranda</a>
+        <a href="#tentangkami">Tentang Kami</a>
+        <a href="#kontak">Kontak</a>
+        <a href="produk.html">My produk</a>
+        <a href="testimoni.html">Testimoni</a>
+      </div>
+    </nav>
+    <!-- Section -->
+    <section class="isi">
+      <main>
+        <h1>Selamat Datang Di Halaman <span>Website Kami</span></h1>
+
+        <p class="text">
+          "Selamat datang di Website Warung Mie SUkses, tempat di mana kelezatan
+          mie menjadi kenyataan! Kami dengan bangga menghadirkan berbagai varian
+          mie dengan cita rasa yang kaya, bahan berkualitas, dan proses
+          pembuatan yang penuh dedikasi. Temukan pilihan mie favorit Anda dan
+          nikmati sensasi rasa yang akan memanjakan lidah Anda. Mari bergabung
+          dengan keluarga besar kami, para pencinta mie sejati, dan jadikan
+          setiap momen makan lebih istimewa bersama kami!"
+        </p>
+      </main>
+      <img src="img/Frame 1 (1).png" alt="Gambar Mie" class="image" />
+    </section>
+    <a href="produk.html" class="btn btn-danger">Cek Produk</a>
+
+    <section id="tentangkami" class="tentangkami">
+      <h2><span>Tentang</span>Kami</h2>
+      <div class="row">
+        <div class="about-img">
+          <img src="img/warung-mie.jpg" alt="Tentang Kami" />
+        </div>
+        <div class="content">
+          <h3>Tentang Warung Kami</h3>
+          <p>
+            Hallo para penggemar mie, Warung Mie Sukses adalah salah satu warung
+            mie yang lagi viral, warung ini terletak di sebelah utara alun alun
+            gianyar, kami menyediakan berbagai macam mie yang bisa membantu
+            memulihkan mood kamuuu, dengan rasa yang enak harga terjangkau,
+            warung ini berdiri pada tanggal 20 desember 2024, walau dibilang
+            baru saja terbit tetapi warung ini bisa bersaing dengan warung
+            warung mie lainnya, akhir akhir ini warung mie kami juga sangat
+            viral mulai dari instagram, tiktok, facebook, banyak kalangan muda
+            yang menyukai mie kami bahkan sampai kalangan orang tua juga suka!!
+          </p>
+          <p></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="kontak" id="kontak">
+      <h2><span>Kontak</span>Kami</h2>
+      <p>
+        jika ada saran atau lainnya silahkan isi form dibawah ini, kami akan
+        menghubungi anda kembali
+      </p>
+
+      <div class="row">
+        <form action="">
+          <div class="form">
+            <label for="">Nama</label>
+            <div class="input-group">
+              <i data-feather="user"></i>
+
+              <input type="text" placeholder="nama" />
+            </div>
+          </div>
+          <div class="form">
+            <label for="">Email</label>
+            <div class="input-group">
+              <i data-feather="mail"></i>
+              <input type="text" placeholder="email" />
+            </div>
+          </div>
+          <div class="form">
+            <label for="">Contack</label>
+            <div class="input-group">
+              <i data-feather="phone"></i>
+              <input type="text" placeholder="No HP" />
+            </div>
+          </div>
+          <button type="submit" class="btn">kirim pesan</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="produklist" class="row mt-4">
+      <!-- Dynamic products will be loaded here -->
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="jquery/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(function () {
+        var URLAPI = "https://apimhstiki.ptov.my.id";
+        var NIM = "2401010006";
+        let urlProduk = URLAPI + "/" + NIM + "/produk/list";
+
+        $.ajax({
+          url: URLAPI + "/slideshow/" + NIM,
+          method: "GET",
+          dataType: "json",
+          success: function (dta) {
+            $("#judul").html(dta.judul);
+            $("#deskripsi").html(dta.deskripsi);
+            $("#copyright").html(
+              "copyright 2024 &copy;" + dta.judul + " " + dta.nama
+            );
+
+            var slideimg = " ";
+
+            dta.images.forEach(function (image, index) {
+              var aktif = index === 0 ? "active" : "";
+              slideimg += `
+                <div class="carousel-item ${aktif}">
+                  <img src="${image.url}" class="d-block w-100" alt=${image.alt}>
+                </div>`;
+            });
+
+            $("#sliderimg").html(slideimg);
+          },
+          error: function (xhr, status, error) {
+            console.log("Ajax Error: ", status, error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

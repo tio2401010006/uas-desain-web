@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Testimoni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/testimoni.css">
+
+    <!-- my style -->
+    <link rel="stylesheet" href="assets/beranda.css">
+
+    <!-- my fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,700&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    
+    <h1>Tambah Data <span>Testimoni</span></h1>
+    <div class="link">
+      <a href="data testi.html">List Data Testimoni</a>
+    </div>
+    
+    <div class="alert alert-success" role="alert" id="inf1">
+      A simple success alert—check it out!
+    </div>
+    <div class="alert alert-danger" role="alert" id="inf2">
+      A simple danger alert—check it out!
+    </div>
+
+    <span id="newTesti">
+        <form id="fTesti" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="NIM" value="2401010006">
+            <input type="hidden" name="ACT" value="stored">
+            
+            <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control" name="NAMA">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="EMAIL">
+            </div>
+            <div class="form-group">
+                <label>Tuliskan Testimoni</label>
+                <textarea class="form-control" name="TESTI"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info" style="margin-top: 20px;">Kirim Testimoni</button>
+            </div>
+
+        </form>
+    </span>
+    <a href="beranda.html" class="btn btn-danger" style="margin-top: 20px;">Kembali Ke Beranda</a>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      var nim="2401010062"
+      var urlAPI = "https://apimhstiki.ptov.my.id/"
+      var urlREAD = urlAPI+"testi"
+
+      $("#inf1").hide()
+      $("#inf2").hide()
+
+      $("#fTesti").on('submit',function(ev){
+        ev.preventDefault()
+        let dtTesti = $(this).serialize()
+        $.ajax({
+          url: urlREAD,
+          method: 'POST',
+          dataType: 'json',
+          data: dtTesti,
+          success: function(dt){
+            if(dt.error==0){
+              console.log("Data berhasil disimpan")
+              $("#inf1").show()
+              $("#inf1").html("Data berhasil disimpan")
+            }else{
+              console.log("Terjadi kegagalan menyimpan data di server")
+              $("#inf2").show()
+              $("#inf2").html("Terjadi kegagalan menyimpan data di server")
+            }
+          },
+          error:function(){
+            console.log("Terjadi kegagalan dalam pengiriman data")
+            $("#inf2").show()
+            $("#inf2").html("Terjadi kegagalan dalam pengiriman data")
+          }
+        })
+      })
+      
+
+
+    </script>
+  </body>
+</html>
